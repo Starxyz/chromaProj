@@ -26,6 +26,7 @@ namespace chromaProcess
 		public MainWindow()
 		{
 			InitializeComponent();
+			
 		}
 
 		private void menuOutput_Click(object sender, RoutedEventArgs e)
@@ -36,8 +37,14 @@ namespace chromaProcess
 		private void menuInput_Click(object sender, RoutedEventArgs e)
 		{
 			DataIO dataIO = new DataIO();
-			dataIO.ChooseInputDir();
-			spectrumList.ItemsSource = dataIO.items;
+			var flag = dataIO.ChooseInputDir();
+			if (flag == true)
+			{
+				dataIO.AddData();
+				spectrumList.ItemsSource = dataIO.items;
+			}
+			else
+				MessageBox.Show("数据导入失败，请重试！");
 		}
 
 		private void menuExit_Click(object sender, RoutedEventArgs e)
@@ -48,6 +55,12 @@ namespace chromaProcess
 		private void MenuEdit_Click(object sender, RoutedEventArgs e)
 		{
 			
+		}
+
+		private void menuTristimulus_Click(object sender, RoutedEventArgs e)
+		{
+			Window1 window1 = new Window1();
+			window1.Show();
 		}
 	}
 }

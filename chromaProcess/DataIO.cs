@@ -10,9 +10,9 @@ namespace chromaProcess
 {
 	class DataIO
 	{
-		private string inputPath;
+		public string inputPath;
 		public List<DataList> items = new List<DataList>();
- 		public void ChooseInputDir()
+ 		public bool ChooseInputDir()
 		{
 			OpenFileDialog fileDialog = new OpenFileDialog();
 			fileDialog.InitialDirectory = "G:\\star\\new_race\\data\\1-16\\normal";
@@ -26,9 +26,10 @@ namespace chromaProcess
 
 					inputPath = fileDialog.FileName;
 					//MessageBox.Show(inputPath);
-					AddData();
+					return true;
 				}
 			}
+			return false;
 		}
 
 		public void AddData()

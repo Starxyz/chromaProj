@@ -1,0 +1,23 @@
+﻿<Window x:Name="tristimulus" x:Class="chromaProcess.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:chromaProcess"
+        mc:Ignorable="d"
+        Title="CIE标准三刺激值" Height="700" Width="477.931">
+    <Grid Margin="0,0,13,0">
+        <ListView HorizontalAlignment="Center" MinHeight="100" Margin="10,10,0,0" VerticalAlignment="Top" MinWidth="100"
+                  Name="tristimulusList" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="波长/nm" Width="100" DisplayMemberBinding="{Binding tri_wave}"/>
+                    <GridViewColumn Header="x(λ)" Width="100" DisplayMemberBinding="{Binding tri_x}"/>
+                    <GridViewColumn Header="y(λ)" Width="100" DisplayMemberBinding="{Binding tri_y}"/>
+                    <GridViewColumn Header="z(λ)" Width="100" DisplayMemberBinding="{Binding tri_z}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>

@@ -21,7 +21,9 @@
                     <MenuItem Name="menuExit" Header="退出" Click="menuExit_Click" ></MenuItem>
                 </MenuItem>
                 <MenuItem Header="编辑" Click="MenuEdit_Click"></MenuItem>
-                <MenuItem Header="公式"></MenuItem>
+                <MenuItem Header="公式">
+                    <MenuItem Name="menuTristimulus" Header="显示CIE标准三刺激值" Click="menuTristimulus_Click" />
+                </MenuItem>
                 <MenuItem Header="关于"></MenuItem>
 
             </Menu>
@@ -29,7 +31,7 @@
         <ListView x:Name="spectrumList" HorizontalAlignment="Left" MinWidth="100" Margin="0,23,0,235">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="波长" Width="100" DisplayMemberBinding="{Binding Wave}"/>
+                    <GridViewColumn Header="波长/nm" Width="100" DisplayMemberBinding="{Binding Wave}"/>
                     <GridViewColumn Header="强度" Width="100" DisplayMemberBinding="{Binding Intensity}"/>
                 </GridView>
             </ListView.View>
