@@ -1,0 +1,15 @@
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\bin\Debug\chromaProcess.exe.config
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\bin\Debug\chromaProcess.exe
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\bin\Debug\chromaProcess.pdb
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\chromaProcess.csprojResolveAssemblyReference.cache
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\MainWindow.g.cs
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\App.g.cs
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\chromaProcess_MarkupCompile.cache
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\chromaProcess_MarkupCompile.lref
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\MainWindow.baml
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\chromaProcess.g.resources
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\chromaProcess.Properties.Resources.resources
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\chromaProcess.csproj.GenerateResource.Cache
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\chromaProcess.csproj.CoreCompileInputs.cache
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\chromaProcess.exe
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\chromaProcess.pdb
