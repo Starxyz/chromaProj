@@ -28,7 +28,7 @@ namespace chromaProcess
 
 		private void inputData()
 		{
-			List<Tristimulus> items = new List<Tristimulus>();
+			List<Tristimulus> tri_values = new List<Tristimulus>();
 			DataIO dataIO = new DataIO();
 			var flag = dataIO.ChooseInputDir();
 			//MessageBox.Show(dataIO.inputPath);
@@ -44,7 +44,7 @@ namespace chromaProcess
 					split = deleteSpace.Split(delimiterChars);
 					try
 					{
-						items.Add(new Tristimulus()
+						tri_values.Add(new Tristimulus()
 						{
 							tri_wave = Int16.Parse(split[0]),
 							tri_x = Double.Parse(split[1]),
@@ -54,28 +54,12 @@ namespace chromaProcess
 					}
 					catch (Exception)
 					{
-
 						MessageBox.Show("数据格式错误！");
+						break;
 					}
 				}
-				tristimulusList.ItemsSource = items;
+				tristimulusList.ItemsSource = tri_values;
 			}
-			/*
-			string[] split = new string[2];
-			foreach (var element in str)
-			{
-				split = element.Split(' ');
-				try
-				{
-
-					items.Add(new DataList() { Wave = Double.Parse(split[0]), Intensity = Double.Parse(split[1]) });
-				}
-				catch
-				{
-					MessageBox.Show("数据格式错误");
-				}
-			}
-			MessageBox.Show(items.Count.ToString());*/
 		}
 	}
 

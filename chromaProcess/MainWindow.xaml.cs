@@ -29,25 +29,25 @@ namespace chromaProcess
 			
 		}
 
-		private void menuOutput_Click(object sender, RoutedEventArgs e)
+		private void MenuOutput_Click(object sender, RoutedEventArgs e)
 		{
 			//dataIO.ChooseOutputDir();
 
 		}
-		private void menuInput_Click(object sender, RoutedEventArgs e)
+		private void MenuInput_Click(object sender, RoutedEventArgs e)
 		{
 			DataIO dataIO = new DataIO();
 			var flag = dataIO.ChooseInputDir();
 			if (flag == true)
 			{
 				dataIO.AddData();
-				spectrumList.ItemsSource = dataIO.items;
+				spectrumList.ItemsSource = dataIO.wave_intensity;
 			}
 			else
 				MessageBox.Show("数据导入失败，请重试！");
 		}
 
-		private void menuExit_Click(object sender, RoutedEventArgs e)
+		private void MenuExit_Click(object sender, RoutedEventArgs e)
 		{
 			Application.Current.Shutdown();
 		}
@@ -57,10 +57,16 @@ namespace chromaProcess
 			
 		}
 
-		private void menuTristimulus_Click(object sender, RoutedEventArgs e)
+		private void MenuTristimulus_Click(object sender, RoutedEventArgs e)
 		{
 			Window1 window1 = new Window1();
 			window1.Show();
+		}
+
+		private void MenuAbout_Click(object sender, RoutedEventArgs e)
+		{
+			PlotWindow plotWindow = new PlotWindow();
+			plotWindow.Show();
 		}
 	}
 }

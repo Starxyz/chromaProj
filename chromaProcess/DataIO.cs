@@ -11,7 +11,7 @@ namespace chromaProcess
 	class DataIO
 	{
 		public string inputPath;
-		public List<DataList> items = new List<DataList>();
+		public List<DataList> wave_intensity = new List<DataList>();
  		public bool ChooseInputDir()
 		{
 			OpenFileDialog fileDialog = new OpenFileDialog();
@@ -42,13 +42,14 @@ namespace chromaProcess
 				try
 				{
 
-					items.Add(new DataList() { Wave = Double.Parse(split[0]), Intensity = Double.Parse(split[1]) });
+					wave_intensity.Add(new DataList() { Wave = Double.Parse(split[0]), Intensity = Double.Parse(split[1]) });
 				}
 				catch {
 					MessageBox.Show("数据格式错误");
+					break;
 				}
 			}
-			MessageBox.Show(items.Count.ToString());
+			MessageBox.Show(wave_intensity.Count.ToString());
 		}
 		private string outputPath;
 		public void ChooseOutputDir()
