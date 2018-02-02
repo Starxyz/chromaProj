@@ -9,12 +9,21 @@ namespace chromaProcess
 {
 	class Plot
 	{
-		public PlotModel plot { get; private set; }
-		public Plot()
+		public PlotModel testModel { get; private set; }
+		public Plot(List<DataList> list)
 		{
-			this.plot = new PlotModel { Title = "Test!" };
-			this.plot.Series.Add(new FunctionSeries(Math.Cos, 0, 10, 0.01, "cos(x)"));
+			DrawLine1(list);
 		}
 		
+		public void DrawLine1(List<DataList> list)
+		{
+			testModel = new PlotModel();
+			var lineSerial = new LineSeries();
+			foreach (var elm in list)
+			{
+				lineSerial.Points.Add(new DataPoint(elm.Wave, elm.Intensity));
+			}
+			testModel.Series.Add(lineSerial);
+		}
     }
 }

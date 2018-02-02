@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using OxyPlot;
+using OxyPlot.Series;
 
 namespace chromaProcess
 {
@@ -22,8 +24,12 @@ namespace chromaProcess
         public PlotWindow()
         {
             InitializeComponent();
-			Plot plotTest = new Plot();
-			this.DataContext = plotTest;
         }
-    }
+
+		public void test(List<DataList> list)
+		{
+			var te = new Plot(list);
+			this.DataContext = te;
+		}
+	}
 }

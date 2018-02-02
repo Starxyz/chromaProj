@@ -8,6 +8,6 @@
         mc:Ignorable="d"
         Title="PlotWindow" Height="300" Width="300">
     <Grid>
-        <oxy:PlotView Model="{Binding Path= plot}" />
+        <oxy:PlotView Model="{Binding Path=testModel}"/>
     </Grid>
 </Window>

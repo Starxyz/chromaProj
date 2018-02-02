@@ -20,54 +20,10 @@ namespace chromaProcess
 	/// </summary>
 	public partial class Window1 : Window
 	{
-		public Window1()
+		public Window1(DataIO data)
 		{
 			InitializeComponent();
-			inputData();
+			data.inputTriData(tristimulusList);
 		}
-
-		private void inputData()
-		{
-			List<Tristimulus> tri_values = new List<Tristimulus>();
-			DataIO dataIO = new DataIO();
-			var flag = dataIO.ChooseInputDir();
-			//MessageBox.Show(dataIO.inputPath);
-			if (flag == true)
-			{
-				string[] split = new string[4];
-				var str = File.ReadAllLines(dataIO.inputPath);
-				MessageBox.Show(str[0]);
-				char[] delimiterChars = { ','};
-				foreach (var element in str)
-				{
-					var deleteSpace = element.Replace(" ", "");
-					split = deleteSpace.Split(delimiterChars);
-					try
-					{
-						tri_values.Add(new Tristimulus()
-						{
-							tri_wave = Int16.Parse(split[0]),
-							tri_x = Double.Parse(split[1]),
-							tri_y = Double.Parse(split[2]),
-							tri_z = Double.Parse(split[3])
-						});
-					}
-					catch (Exception)
-					{
-						MessageBox.Show("数据格式错误！");
-						break;
-					}
-				}
-				tristimulusList.ItemsSource = tri_values;
-			}
-		}
-	}
-
-	class Tristimulus
-	{
-		public double tri_wave { get; set; }
-		public double tri_x { get; set; }
-		public double tri_y { get; set; }
-		public double tri_z { get; set; }
 	}
 }

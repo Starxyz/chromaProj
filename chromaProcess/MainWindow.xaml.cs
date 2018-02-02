@@ -22,7 +22,7 @@ namespace chromaProcess
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		
+		DataIO inputData = new DataIO();
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -31,20 +31,19 @@ namespace chromaProcess
 
 		private void MenuOutput_Click(object sender, RoutedEventArgs e)
 		{
-			//dataIO.ChooseOutputDir();
-
+			
 		}
 		private void MenuInput_Click(object sender, RoutedEventArgs e)
 		{
-			DataIO dataIO = new DataIO();
-			var flag = dataIO.ChooseInputDir();
+			
+			var flag = inputData.ChooseInputDir();
 			if (flag == true)
 			{
-				dataIO.AddData();
-				spectrumList.ItemsSource = dataIO.wave_intensity;
+				inputData.wave_intensity.Clear();
+				inputData.AddData();
+				spectrumList.ItemsSource = inputData.wave_intensity;
 			}
-			else
-				MessageBox.Show("数据导入失败，请重试！");
+			
 		}
 
 		private void MenuExit_Click(object sender, RoutedEventArgs e)
@@ -55,18 +54,22 @@ namespace chromaProcess
 		private void MenuEdit_Click(object sender, RoutedEventArgs e)
 		{
 			
+
 		}
 
 		private void MenuTristimulus_Click(object sender, RoutedEventArgs e)
 		{
-			Window1 window1 = new Window1();
+			Window1 window1 = new Window1(inputData);
 			window1.Show();
 		}
 
-		private void MenuAbout_Click(object sender, RoutedEventArgs e)
+		private void MenuPlot_Click(object sender, RoutedEventArgs e)
 		{
 			PlotWindow plotWindow = new PlotWindow();
+			plotWindow.test(inputData.wave_intensity);
 			plotWindow.Show();
 		}
+
+		
 	}
 }

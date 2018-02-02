@@ -20,10 +20,8 @@
                 <MenuItem Header="公式">
                     <MenuItem x:Name="menuTristimulus" Header="显示CIE标准三刺激值" Click="MenuTristimulus_Click" />
                 </MenuItem>
-                <MenuItem Header="关于" Click="MenuAbout_Click"/>
-
+                <MenuItem Header="Plot" Click="MenuPlot_Click"/>
             </Menu>
-
         </DockPanel>
         <ListView x:Name="spectrumList" HorizontalAlignment="Left" MinWidth="100" Margin="0,30,0,50">
             <ListView.View>
@@ -33,6 +31,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
 
     </Grid>
 </Window>
