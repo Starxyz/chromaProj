@@ -119,32 +119,35 @@ namespace chromaProcess
 		{
 			sample_1nm.Clear();
 			int i = 0;
+			int j = 0;
+			double tmpSum = 0;
 			foreach (var item in wave_intensity)
 			{
+				if ((item.Wave >= 380) && (item.Wave < tri_values[i].tri_wave + 1))
+				{
+					tmpSum += item.Intensity;
+					j++;
+				}
 				try
 				{
-					if (item.Wave > tri_values[i].tri_wave)
+					if (item.Wave > tri_values[i].tri_wave + 1)
 					{
 						sample_1nm.Add(new SampleList()
 						{
 							Wave = tri_values[i].tri_wave,
-							Intensity = item.Intensity,
+							Intensity = tmpSum / 1.0 / j,
 							x1 = tri_values[i].tri_x,
 							y1 = tri_values[i].tri_y,
 							z1 = tri_values[i].tri_z,
 						});
-						//if (i >= 399)
-						//{
-						//	MessageBox.Show(sample_1nm.Count.ToString() + "个采样点");
-						//	break;
-						//}
+						tmpSum = 0;
+						j = 0;
 						if (tri_values[i].tri_wave == 780 || i >= 400)
 						{
 							MessageBox.Show(sample_1nm.Count.ToString() + "个采样点");
 							break;
 						}
 						i++;
-						
 					}
 				}
 				catch
@@ -183,9 +186,9 @@ namespace chromaProcess
 			double sumz = 0;
 			foreach (var item in data.sample_1nm)
 			{
-				sumx += item.Intensity * item.x1;
-				sumy += item.Intensity * item.y1;
-				sumz += item.Intensity * item.z1;
+				sumx += item.Intensity * item.x1 * item.Wave;
+				sumy += item.Intensity * item.y1 * item.Wave;
+				sumz += item.Intensity * item.z1 * item.Wave;
 			}
 			var k = dispNum[0];
 			sumx *= k;
