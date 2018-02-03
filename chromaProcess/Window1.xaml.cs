@@ -23,7 +23,7 @@ namespace chromaProcess
 		public Window1(DataIO data)
 		{
 			InitializeComponent();
-			data.inputTriData(tristimulusList);
+			data.DispTriData(tristimulusList);
 		}
 	}
 }

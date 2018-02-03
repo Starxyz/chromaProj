@@ -18,7 +18,8 @@ namespace chromaProcess
 		public void DrawLine1(List<DataList> list)
 		{
 			testModel = new PlotModel();
-			var lineSerial = new LineSeries();
+			var lineSerial = new LineSeries() { Title = "光谱"};
+
 			foreach (var elm in list)
 			{
 				lineSerial.Points.Add(new DataPoint(elm.Wave, elm.Intensity));

@@ -26,10 +26,13 @@ namespace chromaProcess
             InitializeComponent();
         }
 
-		public void test(List<DataList> list)
+		public void PlotCurve(List<DataList> list)
 		{
 			var te = new Plot(list);
 			this.DataContext = te;
 		}
+
+		
+		
 	}
 }

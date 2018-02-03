@@ -36,5 +36,7 @@ G:\star\chromaProj\1st\chromaProcess\chromaProcess\bin\Debug\OxyPlot.xml
 G:\star\chromaProj\1st\chromaProcess\chromaProcess\bin\Debug\OxyPlot.Wpf.pdb
 G:\star\chromaProj\1st\chromaProcess\chromaProcess\bin\Debug\OxyPlot.Wpf.xml
 G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\PlotWindow.g.cs
-G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\GeneratedInternalTypeHelper.g.cs
 G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\PlotWindow.baml
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\bin\Debug\WpfMath.dll
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\bin\Debug\WpfMath.pdb
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\bin\Debug\WpfMath.xml
