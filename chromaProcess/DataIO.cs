@@ -72,6 +72,7 @@ namespace chromaProcess
 				string header = "波长\t强度\tx\ty\tz";
 				StreamWriter file = new StreamWriter(localFilePath);
 				file.WriteLine(header);
+				MessageBox.Show(data.sample_1nm.Count.ToString());
 				foreach (var item in data.sample_1nm)
 				{
 					string line = item.Wave.ToString() + '\t' + item.Intensity.ToString() + '\t'
@@ -91,7 +92,7 @@ namespace chromaProcess
 		{
 			string[] split = new string[4];
 			var str = File.ReadAllLines("三刺激值.txt");
-			char[] delimiterChars = { ',' };
+			char[] delimiterChars = { '\t'};
 			foreach (var element in str)
 			{
 				var deleteSpace = element.Replace(" ", "");
@@ -100,7 +101,7 @@ namespace chromaProcess
 				{
 					tri_values.Add(new Tristimulus()
 					{
-						tri_wave = Int16.Parse(split[0]),
+						tri_wave = Double.Parse(split[0]),
 						tri_x = Double.Parse(split[1]),
 						tri_y = Double.Parse(split[2]),
 						tri_z = Double.Parse(split[3])
@@ -112,6 +113,7 @@ namespace chromaProcess
 					break;
 				}
 			}
+			//MessageBox.Show(tri_values.Count.ToString());
 		}
 		public void SampleBy1nm()
 		{
@@ -119,21 +121,38 @@ namespace chromaProcess
 			int i = 0;
 			foreach (var item in wave_intensity)
 			{
-				if (item.Wave >= tri_values[i].tri_wave)
+				try
 				{
-					sample_1nm.Add(new SampleList()
+					if (item.Wave > tri_values[i].tri_wave)
 					{
-						Wave = tri_values[i].tri_wave,
-						Intensity = item.Intensity,
-						x1 = tri_values[i].tri_x,
-						y1 = tri_values[i].tri_y,
-						z1 = tri_values[i].tri_z,
-					});
-					if(tri_values[i].tri_wave == 780)
-						break;
-					i++;
+						sample_1nm.Add(new SampleList()
+						{
+							Wave = tri_values[i].tri_wave,
+							Intensity = item.Intensity,
+							x1 = tri_values[i].tri_x,
+							y1 = tri_values[i].tri_y,
+							z1 = tri_values[i].tri_z,
+						});
+						//if (i >= 399)
+						//{
+						//	MessageBox.Show(sample_1nm.Count.ToString() + "个采样点");
+						//	break;
+						//}
+						if (tri_values[i].tri_wave == 780 || i >= 400)
+						{
+							MessageBox.Show(sample_1nm.Count.ToString() + "个采样点");
+							break;
+						}
+						i++;
+						
+					}
 				}
+				catch
+				{
+					MessageBox.Show("unknown error!");
+				}	
 			}
+			//MessageBox.Show(i.ToString());
 
 		}
 		public void SampleBy5nm()

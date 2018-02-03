@@ -76,7 +76,6 @@ namespace chromaProcess
 				isSample = true;
 				spectrumList.ItemsSource = inputData.sample_1nm;
 				MessageBox.Show("1nm采样成功");
-
 				inputData.Calculate(inputData); //提前计算结果，为显示作准备
 			}
 		}
