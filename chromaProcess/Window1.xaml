@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="CIE标准三刺激值" Height="700" Width="477.931">
     <Grid Margin="0,0,13,0">
-        <ListView HorizontalAlignment="Center" MinHeight="100" Margin="10,10,0,0" VerticalAlignment="Top" MinWidth="100"
-                  Name="tristimulusList" >
+        <ListView HorizontalAlignment="Center" MinHeight="100" Margin="28,10,19,0" VerticalAlignment="Top" MinWidth="100"
+                  Name="tristimulusList" Height="172" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="波长/nm" Width="100" DisplayMemberBinding="{Binding tri_wave}"/>

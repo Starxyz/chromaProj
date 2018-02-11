@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MathNet.Numerics.LinearAlgebra;
 
 namespace chromaProcess
 {
@@ -22,8 +23,9 @@ namespace chromaProcess
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		DataIO inputData = new DataIO();
+		public DataIO inputData = new DataIO();
 		Formulas test = new Formulas();
+		
 		bool isOpen = false;
 		bool isSample = false;
 		public MainWindow()
@@ -66,6 +68,13 @@ namespace chromaProcess
 			PlotWindow plotWindow = new PlotWindow();
 			plotWindow.PlotCurve(inputData.wave_intensity);
 			plotWindow.Show();
+
+			//var M = Matrix<double>.Build;
+			//var m = M.DenseOfRowArrays(inputData.BasicR, inputData.BasicG, inputData.BasicB);
+			//var unit = M.DenseOfDiagonalArray(3, 3, new double[3]{ 1, 1, 1});
+			//var res = m.Inverse(); ;
+			//MessageBox.Show(res.ToString());
+			inputData.CalBrightness(inputData);			
 		}
 
 		private void menuSample1_Click(object sender, RoutedEventArgs e)
@@ -79,7 +88,7 @@ namespace chromaProcess
 				inputData.Calculate(inputData); //提前计算结果，为显示作准备
 			}
 		}
-
+		
 		private void menuSample5_Click(object sender, RoutedEventArgs e)
 		{
 			if (isOpen == true)
@@ -184,6 +193,20 @@ namespace chromaProcess
 			}
 			else
 				MessageBox.Show("请导入数据并进行抽样！");
+		}
+
+		private void menuTrisBasic_Click(object sender, RoutedEventArgs e)
+		{
+			TrisBasic trisBasic = new TrisBasic(inputData);
+			trisBasic.Show();
+		}
+
+		private void btnBrightness_Click(object sender, RoutedEventArgs e)
+		{
+			//MessageBox.Show(inputData.BasicB[0].ToString());
+			double L = inputData.Lr + inputData.Lg + inputData.Lb;
+			MessageBox.Show("亮度是： " + L.ToString() + '\n' + "Lr = " + inputData.Lr.ToString()
+							+ '\n' + "Lg = " + inputData.Lg.ToString() + '\n' + "Lb = " + inputData.Lb.ToString());
 		}
 	}
 }

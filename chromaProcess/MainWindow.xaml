@@ -23,6 +23,7 @@
                 </MenuItem>
                 <MenuItem Header="公式">
                     <MenuItem x:Name="menuTristimulus" Header="显示CIE标准光谱三刺激值" Click="MenuTristimulus_Click" />
+                    <MenuItem x:Name="menuTrisBasic" Header="设置三基色坐标" Click="menuTrisBasic_Click" />
                     <MenuItem x:Name="menuAdjCoef" Header="调整系数K" Click="menuAdjCoef_Click"/>
                     <MenuItem x:Name="menuPropCoef" Header="三刺激值X Y Z" Click="menuPropCoef_Click"/>
                     <MenuItem x:Name="menuChroma" Header="色品坐标x y z" Click="menuChroma_Click"/>
@@ -81,18 +82,15 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Name="btnK" Margin="5" Click="btnK_Click" Grid.Column="0" Grid.Row="0">
-                    <Button Content="调整系数k"/>
+                <Button Name="btnK" Margin="5" Click="btnK_Click" Grid.Column="0" Grid.Row="0" Content="调整系数k">
                 </Button>
-                <Button Name="btnXYZ" Margin="5" Click="btnXYZ_Click" Grid.Column="1" Grid.Row="0">
-                    <Button Content="刺激值XYZ" />
+                <Button Name="btnXYZ" Margin="5" Click="btnXYZ_Click" Grid.Column="1" Grid.Row="0" Content="刺激值XYZ">
                 </Button>
-                <Button Name="btn_xyz" Margin="5" Click="btn_xyz_Click" Grid.Column="2" Grid.Row="0">
-                    <Button Content="色品坐标" />
+                <Button Name="btn_xyz" Margin="5" Click="btn_xyz_Click" Grid.Column="2" Grid.Row="0" Content="色品坐标">
                 </Button>
-                <Button Name="btnNT" Margin="5" Click="btnNT_Click" Grid.Column="3" Grid.Row="0">
-                    <Button Content="色温"/>
+                <Button Name="btnNT" Margin="5" Click="btnNT_Click" Grid.Column="3" Grid.Row="0" Content="色温" >
                 </Button>
+                <Button Name="btnBrightness" Margin="5" Grid.Column="0" Grid.Row="1" Content="计算亮度" Click="btnBrightness_Click"/>
             </Grid>
             <TextBox Name="dispLabel" Grid.Column="0" Grid.Row="2" IsReadOnly="True" HorizontalContentAlignment="Center"
                      VerticalContentAlignment="Center">

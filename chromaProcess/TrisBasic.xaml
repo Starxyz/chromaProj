@@ -1,0 +1,29 @@
+﻿<Window x:Class="chromaProcess.TrisBasic"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:chromaProcess"
+        mc:Ignorable="d"
+        Title="TrisBasic" Height="300" Width="350" Closed="Window_Closed">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="(Xr,Yr,Zr)" HorizontalAlignment="Right" Margin="0,20,5,0" VerticalAlignment="Top"/>
+        <Label Content="(Xg,Yg,Zg)" HorizontalAlignment="Right" Margin="0,20,5,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="(Xb,Yb,Zb)" HorizontalAlignment="Right" Margin="0,20,5,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Button x:Name="btnConfirm" Content="确定" HorizontalAlignment="Right" Margin="0,0,5,5" Grid.Row="3" VerticalAlignment="Top" Width="75" Click="btnConfirm_Click" />
+        <Button x:Name="btnCancel" Content="取消" Grid.Column="1" HorizontalAlignment="Left" Margin="30,0,0,48" Grid.Row="3" Width="75" Click="btnCancel_Click"/>
+        <TextBox Name="BasicRed" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox Name="BasicGreen" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,25,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" />
+        <TextBox Name="BasicBlue" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,25,0,0" Grid.Row="2" TextWrapping="NoWrap"  VerticalAlignment="Top" />
+    </Grid>
+</Window>

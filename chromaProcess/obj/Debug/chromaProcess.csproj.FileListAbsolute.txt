@@ -40,3 +40,7 @@ G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\PlotWindow.baml
 G:\star\chromaProj\1st\chromaProcess\chromaProcess\bin\Debug\WpfMath.dll
 G:\star\chromaProj\1st\chromaProcess\chromaProcess\bin\Debug\WpfMath.pdb
 G:\star\chromaProj\1st\chromaProcess\chromaProcess\bin\Debug\WpfMath.xml
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\TrisBasic.g.cs
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\TrisBasic.baml
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\bin\Debug\MathNet.Numerics.dll
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\bin\Debug\MathNet.Numerics.xml

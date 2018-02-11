@@ -41,6 +41,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\InteractiveDataDisplay.WPF-master\samples\LineGraphSample\packages\InteractiveDataDisplay.WPF.1.0.0\lib\net452\InteractiveDataDisplay.WPF.dll</HintPath>
     </Reference>
+    <Reference Include="MathNet.Numerics, Version=3.20.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.3.20.2\lib\net40\MathNet.Numerics.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Maps.MapControl.WPF.1.0.0.3\lib\net40-Client\Microsoft.Maps.MapControl.WPF.dll</HintPath>
     </Reference>
@@ -94,6 +97,9 @@
     <Compile Include="PlotWindow.xaml.cs">
       <DependentUpon>PlotWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TrisBasic.xaml.cs">
+      <DependentUpon>TrisBasic.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
@@ -111,6 +117,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PlotWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TrisBasic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

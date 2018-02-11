@@ -7,11 +7,18 @@ using System.Threading.Tasks;
 using System.Windows;
 using OxyPlot;
 using System.Windows.Controls;
+using MathNet.Numerics.LinearAlgebra;
 
 namespace chromaProcess
 {
 	public class DataIO
 	{
+		public double[] BasicR = new double[3];
+		public double[] BasicG = new double[3];
+		public double[] BasicB = new double[3];
+		public double[] BasicC = new double[3];
+		public double Lr, Lg, Lb;
+		public double[] BasicCrgb = new double[3];
 		public string inputPath;
 		public List<DataList> wave_intensity = new List<DataList>();
 		public List<Tristimulus> tri_values = new List<Tristimulus>();
@@ -186,9 +193,9 @@ namespace chromaProcess
 			double sumz = 0;
 			foreach (var item in data.sample_1nm)
 			{
-				sumx += item.Intensity * item.x1 * item.Wave;
-				sumy += item.Intensity * item.y1 * item.Wave;
-				sumz += item.Intensity * item.z1 * item.Wave;
+				sumx += item.Intensity * item.x1; //* item.Wave;
+				sumy += item.Intensity * item.y1; //* item.Wave;
+				sumz += item.Intensity * item.z1; //* item.Wave;
 			}
 			var k = dispNum[0];
 			sumx *= k;
@@ -213,6 +220,20 @@ namespace chromaProcess
 			dispNum[8] = -437 * Math.Pow(dispNum[7], 3) + 3601 * Math.Pow(dispNum[7], 2)  
 						-6861 * dispNum[7] + 5514.31;
 		}
+
+		public void CalBrightness(DataIO data)
+		{
+			var M = Matrix<double>.Build;
+			var trisValueMatrix = M.DenseOfRowArrays(data.BasicR, data.BasicG, data.BasicB);
+			//var unit = M.DenseOfDiagonalArray(3, 3, new double[3] { 1, 1, 1 });
+			var cMatrix = M.DenseOfRowArrays(data.BasicC);
+			var Crgb = cMatrix * trisValueMatrix.Inverse();
+			Lr = Crgb.At(0, 0) * BasicR[1];
+			Lg = Crgb.At(0, 1) * BasicG[1];
+			Lb = Crgb.At(0, 2) * BasicB[1];
+			//MessageBox.Show(cMatrix.ToString());
+		}
+
 		public void Calculate(DataIO data)
 		{
 			data.CalCoef(data);
@@ -220,6 +241,7 @@ namespace chromaProcess
 			data.Calxyz();
 			data.Caln();
 			data.CalT();
+			data.CalBrightness(data);
 		}
 	}
 
