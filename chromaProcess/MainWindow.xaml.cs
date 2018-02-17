@@ -74,7 +74,7 @@ namespace chromaProcess
 			//var unit = M.DenseOfDiagonalArray(3, 3, new double[3]{ 1, 1, 1});
 			//var res = m.Inverse(); ;
 			//MessageBox.Show(res.ToString());
-			inputData.CalBrightness(inputData);			
+			
 		}
 
 		private void menuSample1_Click(object sender, RoutedEventArgs e)
@@ -110,7 +110,6 @@ namespace chromaProcess
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			inputData.GetTriData();
-			
 		}
 
 		private void menuAdjCoef_Click(object sender, RoutedEventArgs e)
@@ -204,9 +203,11 @@ namespace chromaProcess
 		private void btnBrightness_Click(object sender, RoutedEventArgs e)
 		{
 			//MessageBox.Show(inputData.BasicB[0].ToString());
-			double L = inputData.Lr + inputData.Lg + inputData.Lb;
-			MessageBox.Show("亮度是： " + L.ToString() + '\n' + "Lr = " + inputData.Lr.ToString()
-							+ '\n' + "Lg = " + inputData.Lg.ToString() + '\n' + "Lb = " + inputData.Lb.ToString());
+			//double L = inputData.Lr + inputData.Lg + inputData.Lb;
+			//MessageBox.Show("亮度是： " + L.ToString() + '\n' + "Lr = " + inputData.Lr.ToString()
+			//				+ '\n' + "Lg = " + inputData.Lg.ToString() + '\n' + "Lb = " + inputData.Lb.ToString());
+			var test = inputData.CalBrightness(inputData);
+			dispLabel.Text = test;
 		}
 	}
 }

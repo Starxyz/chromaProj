@@ -17,8 +17,10 @@ namespace chromaProcess
 		public double[] BasicG = new double[3];
 		public double[] BasicB = new double[3];
 		public double[] BasicC = new double[3];
+		public double[] TargetMatrix = new double[3];
 		public double Lr, Lg, Lb;
 		public double[] BasicCrgb = new double[3];
+		public double[] TargetColour = new double[3];
 		public string inputPath;
 		public List<DataList> wave_intensity = new List<DataList>();
 		public List<Tristimulus> tri_values = new List<Tristimulus>();
@@ -221,17 +223,22 @@ namespace chromaProcess
 						-6861 * dispNum[7] + 5514.31;
 		}
 
-		public void CalBrightness(DataIO data)
+		public string CalBrightness(DataIO data)
 		{
 			var M = Matrix<double>.Build;
 			var trisValueMatrix = M.DenseOfRowArrays(data.BasicR, data.BasicG, data.BasicB);
 			//var unit = M.DenseOfDiagonalArray(3, 3, new double[3] { 1, 1, 1 });
-			var cMatrix = M.DenseOfRowArrays(data.BasicC);
-			var Crgb = cMatrix * trisValueMatrix.Inverse();
-			Lr = Crgb.At(0, 0) * BasicR[1];
-			Lg = Crgb.At(0, 1) * BasicG[1];
-			Lb = Crgb.At(0, 2) * BasicB[1];
-			//MessageBox.Show(cMatrix.ToString());
+			double[] bArray = new double[3];
+			bArray[0] = data.BasicR[1];
+			bArray[1] = data.BasicG[1];
+			bArray[2] = data.BasicB[1];
+			var bMatrix = M.DenseOfDiagonalArray(3, 3, bArray);
+			var cMatrix = M.DenseOfRowArrays(data.TargetMatrix);
+			var res = cMatrix * trisValueMatrix.Inverse() * bMatrix;
+			var res1 = res * bMatrix;
+			//var cMatrix = M.DenseOfRowArrays(data.BasicC);
+			//MessageBox.Show(res.ToString());
+			return res.ToString();
 		}
 
 		public void Calculate(DataIO data)

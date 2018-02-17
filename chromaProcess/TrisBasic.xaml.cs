@@ -20,9 +20,9 @@ namespace chromaProcess
 	public partial class TrisBasic : Window
 	{
 
-		public static string red = "0.6858,0.3019,0.0123";
-		public static string green = "0.2258,0.7112,0.0630";
-		public static string blue = "0.1414,0.0499,0.8087";
+		public static string red = "0.6844,0.3016,0.0139";
+		public static string green = "0.2286,0.7037,0.0676";
+		public static string blue = "0.1413,0.0503,0.8083";
 		DataIO tmp;
 		
 		public TrisBasic(DataIO setBasic)
@@ -41,6 +41,7 @@ namespace chromaProcess
 			var tmpR = BasicRed.Text.Split(',');
 			var tmpG = BasicGreen.Text.Split(',');
 			var tmpB = BasicBlue.Text.Split(',');
+			var tmpTarget = TargetColor.Text.Split(',');
 			try
 			{
 				for (int i = 0; i < 3; i++)
@@ -54,6 +55,10 @@ namespace chromaProcess
 				for (int i = 0; i < 3; i++)
 				{
 					dataIO.BasicB[i] = Double.Parse(tmpB[i]);
+				}
+				for (int i = 0; i < 3; i++)
+				{
+					dataIO.TargetMatrix[i] = Double.Parse(tmpTarget[i]);
 				}
 			}
 			catch
