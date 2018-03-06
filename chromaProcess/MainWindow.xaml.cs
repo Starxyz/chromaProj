@@ -66,7 +66,13 @@ namespace chromaProcess
 		private void MenuPlot_Click(object sender, RoutedEventArgs e)
 		{
 			PlotWindow plotWindow = new PlotWindow();
-			plotWindow.PlotCurve(inputData.wave_intensity);
+			List<DataList> plotData = new List<DataList>();
+
+			foreach (DataList element in spectrumList.Items)
+			{
+				plotData.Add(element);
+			}
+			plotWindow.PlotCurve(plotData);
 			plotWindow.Show();
 
 			//var M = Matrix<double>.Build;

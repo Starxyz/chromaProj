@@ -266,10 +266,8 @@ namespace chromaProcess
 		public double tri_z { get; set; }
 	}
 
-	public class SampleList
+	public class SampleList : DataList
 	{
-		public double Wave { get; set; }
-		public double Intensity { get; set; }
 		public double x1 { get; set; }
 		public double y1 { get; set; }
 		public double z1 { get; set; }
