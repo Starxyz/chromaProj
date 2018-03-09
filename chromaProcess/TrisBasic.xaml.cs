@@ -63,7 +63,7 @@ namespace chromaProcess
 			}
 			catch
 			{
-				MessageBox.Show("正确的数据格式是(num,num,num)");
+				MessageBox.Show("请根据目标色上面的格式输入目标色坐标！");
 			}
 			dataIO.BasicC[0] = dataIO.BasicR[0] + dataIO.BasicG[0] + dataIO.BasicB[0];
 			dataIO.BasicC[1] = dataIO.BasicR[1] + dataIO.BasicG[1] + dataIO.BasicB[1];

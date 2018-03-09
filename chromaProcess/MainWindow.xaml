@@ -33,7 +33,7 @@
                 <MenuItem Header="Plot" Click="MenuPlot_Click"/>
             </Menu>
         </DockPanel>
-        
+
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -46,7 +46,7 @@
                 <RowDefinition/>
                 <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
-            
+
             <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,15,15">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -90,13 +90,14 @@
                 </Button>
                 <Button Name="btnNT" Margin="5" Click="btnNT_Click" Grid.Column="3" Grid.Row="0" Content="色温" >
                 </Button>
-                <Button Name="btnBrightness" Margin="5" Grid.Column="0" Grid.Row="1" Content="计算亮度" Click="btnBrightness_Click"/>
+                <Button Name="btnBrightness" Margin="5,0,5,5" Grid.Column="0" Grid.Row="1" Content="计算亮度" Click="btnBrightness_Click" Height="27" VerticalAlignment="Bottom"/>
+                <Button Name="btnLm" Margin="5,0,5,5" Grid.Column="1" Grid.Row="1" Content="光通量" Click="btnLm_Click" Height="27" VerticalAlignment="Bottom"/>
             </Grid>
             <TextBox Name="dispLabel" Grid.Column="0" Grid.Row="2" IsReadOnly="True" HorizontalContentAlignment="Center"
                      VerticalContentAlignment="Center">
             </TextBox>
-            <ListView x:Name="spectrumList" HorizontalAlignment="Left" MinWidth="100" Grid.Column="0" Grid.Row="0"
-                      Grid.RowSpan="2" Margin="0,0,0,10" Height="334" VerticalAlignment="Bottom">
+            <ListView x:Name="spectrumList" HorizontalAlignment="Left" MinWidth="120" Grid.Column="0" Grid.Row="0"
+                      Grid.RowSpan="2" Margin="0,20,0,10" MinHeight="330" VerticalAlignment="Top">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="波长/nm"  DisplayMemberBinding="{Binding Wave}"/>

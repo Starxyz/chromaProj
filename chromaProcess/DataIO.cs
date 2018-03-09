@@ -8,6 +8,7 @@ using System.Windows;
 using OxyPlot;
 using System.Windows.Controls;
 using MathNet.Numerics.LinearAlgebra;
+using System.ComponentModel;
 
 namespace chromaProcess
 {
@@ -21,11 +22,16 @@ namespace chromaProcess
 		public double Lr, Lg, Lb;
 		public double[] BasicCrgb = new double[3];
 		public double[] TargetColour = new double[3];
-		public static string inputPath;	//所有类共用一个路径
-		public List<DataList> wave_intensity = new List<DataList>();
+		public static double[] VisionFunc = new double[81];
+		public static string inputPath; //所有类共用一个路径
+		//public List<DataList> wave_intensity = new List<DataList>();
+		//public List<Tristimulus> tri_values = new List<Tristimulus>();
+		//public List<SampleList> sample_1nm = new List<SampleList>();
+		//public List<SampleList> sample_5nm = new List<SampleList>();
+		public BindingList<DataList> wave_intensity = new BindingList<DataList>();
 		public List<Tristimulus> tri_values = new List<Tristimulus>();
-		public List<SampleList> sample_1nm = new List<SampleList>();
-		public List<SampleList> sample_5nm = new List<SampleList>();
+		public BindingList<SampleList> sample_1nm = new BindingList<SampleList>();
+		public BindingList<SampleList5> sample_5nm = new BindingList<SampleList5>();
 		public double[] dispNum = new double[9];
 		public bool ChooseInputDir()
 		{
@@ -81,8 +87,8 @@ namespace chromaProcess
 				string header = "波长\t强度\tx\ty\tz";
 				StreamWriter file = new StreamWriter(localFilePath);
 				file.WriteLine(header);
-				MessageBox.Show(data.sample_1nm.Count.ToString());
-				foreach (var item in data.sample_1nm)
+				MessageBox.Show(data.sample_5nm.Count.ToString());
+				foreach (var item in data.sample_5nm)
 				{
 					string line = item.Wave.ToString() + '\t' + item.Intensity.ToString() + '\t'
 									+ item.x1.ToString() + '\t' + item.y1.ToString() + '\t' + item.z1.ToString();
@@ -91,6 +97,28 @@ namespace chromaProcess
 				file.Close();
 			}
 		}
+
+		//public void SavaData(int i)
+		//{
+		//	SaveFileDialog sfd = new SaveFileDialog();
+		//	sfd.Filter = "文本文件(*.txt)|*.txt|所有文件(*.*)|*.*";
+		//	var result = sfd.ShowDialog();
+		//	if (result == true)
+		//	{
+		//		string localFilePath = sfd.FileName.ToString();
+		//		string header = "波长\t强度";
+		//		StreamWriter file = new StreamWriter(localFilePath);
+		//		file.WriteLine(header);
+		//		//MessageBox.Show(data.sample_1nm.Count.ToString());
+		//		foreach (var item in data.sample_1nm)
+		//		{
+		//			string line = item.Wave.ToString() + '\t' + item.Intensity.ToString() + '\t'
+		//							+ item.x1.ToString() + '\t' + item.y1.ToString() + '\t' + item.z1.ToString();
+		//			file.WriteLine(line);
+		//		}
+		//		file.Close();
+		//	}
+		//}
 
 		public void DispTriData(ListView listView)
 		{
@@ -123,6 +151,22 @@ namespace chromaProcess
 				}
 			}
 			//MessageBox.Show(tri_values.Count.ToString());
+		}
+		public void GetVision()
+		{
+			var str = File.ReadAllLines("vision.txt");
+			int i = 0;
+			try
+			{
+				foreach (var element in str)
+				{
+					VisionFunc[i++] = Double.Parse(element);
+				}
+			}		
+			catch (Exception)
+			{
+				MessageBox.Show("引用视见函数出错!");
+			}
 		}
 		public void SampleBy1nm()
 		{
@@ -171,11 +215,14 @@ namespace chromaProcess
 		{
 			sample_1nm.Clear();
 			SampleBy1nm();
+			int i = 0;
 			foreach (var item in sample_1nm)
 			{
 				if (item.Wave % 5 == 0)
 				{
-					sample_5nm.Add(item);
+					sample_5nm.Add(new SampleList5 { x1 = item.x1, y1 = item.y1, z1 = item.z1,
+						Intensity = item.Intensity, Wave = item.Wave,
+						vision = VisionFunc[i++]});
 				}
 			}
 		}
@@ -223,6 +270,21 @@ namespace chromaProcess
 						-6861 * dispNum[7] + 5514.31;
 		}
 
+		public string CalLm()
+		{
+			SampleBy5nm();
+			double sum = 0;
+			int i = 0;
+			foreach (var element in sample_5nm)
+			{
+				sum += element.Intensity * element.vision * 5;
+				i++;
+			}
+			var res = sum * 683;
+			//MessageBox.Show("光通量是:" + res);
+			return res.ToString();
+		}
+
 		public string CalBrightness(DataIO data)
 		{
 			var M = Matrix<double>.Build;
@@ -234,7 +296,7 @@ namespace chromaProcess
 			bArray[2] = data.BasicB[1];
 			var bMatrix = M.DenseOfDiagonalArray(3, 3, bArray);
 			var cMatrix = M.DenseOfRowArrays(data.TargetMatrix);
-			var res = cMatrix * trisValueMatrix.Inverse() * bMatrix;
+			var res = cMatrix * trisValueMatrix.Inverse() * bMatrix * 1000000;
 			var res1 = res * bMatrix;
 			//var cMatrix = M.DenseOfRowArrays(data.BasicC);
 			//MessageBox.Show(res.ToString());
@@ -271,6 +333,11 @@ namespace chromaProcess
 		public double x1 { get; set; }
 		public double y1 { get; set; }
 		public double z1 { get; set; }
+	}
+
+	public class SampleList5 : SampleList
+	{
+		public double vision = 0;
 	}
 
 	public class Formulas
