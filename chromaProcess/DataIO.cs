@@ -21,7 +21,7 @@ namespace chromaProcess
 		public double Lr, Lg, Lb;
 		public double[] BasicCrgb = new double[3];
 		public double[] TargetColour = new double[3];
-		public string inputPath;
+		public static string inputPath;	//所有类共用一个路径
 		public List<DataList> wave_intensity = new List<DataList>();
 		public List<Tristimulus> tri_values = new List<Tristimulus>();
 		public List<SampleList> sample_1nm = new List<SampleList>();
@@ -153,7 +153,7 @@ namespace chromaProcess
 						j = 0;
 						if (tri_values[i].tri_wave == 780 || i >= 400)
 						{
-							MessageBox.Show(sample_1nm.Count.ToString() + "个采样点");
+							//MessageBox.Show(sample_1nm.Count.ToString() + "个采样点");
 							break;
 						}
 						i++;

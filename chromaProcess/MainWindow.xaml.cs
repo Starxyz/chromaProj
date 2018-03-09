@@ -31,7 +31,6 @@ namespace chromaProcess
 		public MainWindow()
 		{
 			InitializeComponent();
-			
 		}
 
 		private void MenuOutput_Click(object sender, RoutedEventArgs e)
@@ -46,6 +45,10 @@ namespace chromaProcess
 			{
 				isOpen = true;
 				inputData.wave_intensity.Clear();
+				inputData.sample_1nm.Clear();
+				inputData.sample_5nm.Clear();
+
+				//inputData = new DataIO();
 				inputData.AddData();
 				spectrumList.ItemsSource = inputData.wave_intensity;//显示导入的数据
 			}

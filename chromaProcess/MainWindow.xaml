@@ -96,7 +96,7 @@
                      VerticalContentAlignment="Center">
             </TextBox>
             <ListView x:Name="spectrumList" HorizontalAlignment="Left" MinWidth="100" Grid.Column="0" Grid.Row="0"
-                      Grid.RowSpan="2" Margin="0,25,0,10">
+                      Grid.RowSpan="2" Margin="0,0,0,10" Height="334" VerticalAlignment="Bottom">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="波长/nm"  DisplayMemberBinding="{Binding Wave}"/>
