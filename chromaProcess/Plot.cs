@@ -19,6 +19,8 @@ namespace chromaProcess
 		{
 			testModel = new PlotModel();
 			var lineSerial = new LineSeries() { Title = "光谱"};
+			//lineSerial.MarkerFill = OxyColor.;
+			lineSerial.MarkerType = MarkerType.Circle;
 
 			foreach (var elm in list)
 			{

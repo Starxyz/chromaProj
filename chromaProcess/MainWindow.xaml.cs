@@ -25,12 +25,14 @@ namespace chromaProcess
 	{
 		public DataIO inputData = new DataIO();
 		Formulas test = new Formulas();
-		
+		private int password = 0;
+		private int keyValue = 0;
 		bool isOpen = false;
 		bool isSample = false;
 		public MainWindow()
 		{
 			InitializeComponent();
+			hints.Visibility = Visibility.Visible;
 		}
 
 		private void MenuOutput_Click(object sender, RoutedEventArgs e)
@@ -159,10 +161,28 @@ namespace chromaProcess
 
 		private void btnK_Click(object sender, RoutedEventArgs e)
 		{
+			keyValue = 1;
+			if (password == 1)
+			{
+				txtTemp.Text = test.adjCoef;
+				txtTempY.Text = null;
+				txtTempZ.Text = null;
+			}
+			else
+			{
+				txtTemp.Text = test._adjCoef;
+				txtTempY.Text = null;
+				txtTempZ.Text = null;
+			}
+			
 			if (isOpen && isSample)
 			{
-				//inputData.CalCoef(inputData);
-				dispLabel.Text = "调整系数：K=" + inputData.dispNum[0].ToString();
+				if (password == 1)
+				{
+					inputData.CalCoef(inputData);
+					dispLabel.Text = "调整系数：K=" + inputData.dispNum[0].ToString();
+				}
+				btnS_lambda.Visibility = Visibility.Visible;
 			}
 			else
 				MessageBox.Show("请导入数据并进行抽样！");
@@ -170,6 +190,9 @@ namespace chromaProcess
 
 		private void btnXYZ_Click(object sender, RoutedEventArgs e)
 		{
+			txtTemp.Text = test.trisMulusX;
+			txtTempY.Text = test.trisMulusY;
+			txtTempZ.Text = test.trisMulusZ;
 			if (isOpen && isSample)
 			{
 				//inputData.CalXYZ(inputData);
@@ -183,10 +206,26 @@ namespace chromaProcess
 
 		private void btn_xyz_Click(object sender, RoutedEventArgs e)
 		{
+			keyValue = 2;
+			if (password == 2)
+			{
+				txtTemp.Text = test.coordx;
+				txtTempY.Text = test.coordy;
+				txtTempZ.Text = test.coordz;
+			}
+			else
+			{
+				txtTemp.Text = test._coordx;
+				txtTempY.Text = test._coordy;
+				txtTempZ.Text = test._coordz;
+			}
 			if (isOpen && isSample)
 			{
-				dispLabel.Text = "(" + inputData.dispNum[4].ToString("F6") + ", " + inputData.dispNum[5].ToString("F6")
+				if (password == 2)
+				{
+					dispLabel.Text = "(" + inputData.dispNum[4].ToString("F6") + ", " + inputData.dispNum[5].ToString("F6")
 									+ ", " + inputData.dispNum[6].ToString("F6") + ')';
+				}	
 			}
 			else
 				MessageBox.Show("请导入数据并进行抽样！");
@@ -194,10 +233,26 @@ namespace chromaProcess
 
 		private void btnNT_Click(object sender, RoutedEventArgs e)
 		{
+			keyValue = 3;
+			if (password == 3)
+			{
+				txtTemp.Text = test.colorT;
+				txtTempY.Text = test.colorN;
+				txtTempZ.Text = null;
+			}
+			else
+			{
+				txtTemp.Text = test._colorT;
+				txtTempY.Text = test._colorN;
+				txtTempZ.Text = null;
+			}
 			if (isOpen && isSample)
 			{
-				dispLabel.Text = "n = " + inputData.dispNum[7].ToString() + '\n'
+				if (password == 3)
+				{
+					dispLabel.Text = "n = " + inputData.dispNum[7].ToString() + '\n'
 									+ "T = " + inputData.dispNum[8].ToString();
+				}	
 			}
 			else
 				MessageBox.Show("请导入数据并进行抽样！");
@@ -221,8 +276,130 @@ namespace chromaProcess
 
 		private void btnLm_Click(object sender, RoutedEventArgs e)
 		{
-			var res = inputData.CalLm();
-			dispLabel.Text = "光通量：" + res;
+			keyValue = 4;
+			if (password == 4)
+			{
+				txtTemp.Text = test.flux;
+				txtTempY.Text = null;
+				txtTempZ.Text = null; ;
+
+				var res = inputData.CalLm();
+				dispLabel.Text = "光通量：" + res;
+			}
+			else
+			{
+				txtTemp.Text = test._flux;
+				txtTempY.Text = null;
+				txtTempZ.Text = null;
+			}
+		}
+
+		private void btnS_lambda_Click(object sender, RoutedEventArgs e)
+		{
+			if (keyValue == 1)
+			{
+				txtTemp.Text = test.adjCoef;
+				txtTempY.Text = null;
+				txtTempZ.Text = null;
+				password = 1;
+			}
+			else
+			{
+				MessageBox.Show("选择的参数不正确，请重新选择");
+			}
+			
+			//dispLabel.Text = "调整系数：K=" + inputData.dispNum[0].ToString();
+			//btnS_lambda.Visibility = Visibility.Visible;
+		}
+
+		private void btnIn_X_Click(object sender, RoutedEventArgs e)
+		{
+			if (keyValue == 2)
+			{
+				txtTemp.Text = test.coordx;
+				txtTempY.Text = test.coordy;
+				txtTempZ.Text = test.coordz;
+				password = 2;
+			}
+			else
+			{
+				MessageBox.Show("选择的参数不正确，请重新选择");
+			}
+		}
+
+		private void btnIn_Y_Click(object sender, RoutedEventArgs e)
+		{
+			if (keyValue == 2)
+			{
+				txtTemp.Text = test.coordx;
+				txtTempY.Text = test.coordy;
+				txtTempZ.Text = test.coordz;
+				password = 2;
+			}
+			else
+			{
+				MessageBox.Show("选择的参数不正确，请重新选择");
+			}
+		}
+
+		private void btnIn_Z_Click(object sender, RoutedEventArgs e)
+		{
+			if (keyValue == 2)
+			{
+				txtTemp.Text = test.coordx;
+				txtTempY.Text = test.coordy;
+				txtTempZ.Text = test.coordz;
+				password = 2;
+			}
+			else
+			{
+				MessageBox.Show("选择的参数不正确，请重新选择");
+			}
+		}
+
+		private void btnIn_x_Click(object sender, RoutedEventArgs e)
+		{
+			if (keyValue == 3)
+			{
+				txtTemp.Text = test.colorT;
+				txtTempY.Text = test.colorN;
+				txtTempZ.Text = null;
+				password = 3;
+			}
+			else
+			{
+				MessageBox.Show("选择的参数不正确，请重新选择");
+			}
+		}
+
+		private void btnIn_y_Click(object sender, RoutedEventArgs e)
+		{
+			if (keyValue == 3)
+			{
+				txtTemp.Text = test.colorT;
+				txtTempY.Text = test.colorN;
+				txtTempZ.Text = null;
+				password = 3;
+			}
+			else
+			{
+				MessageBox.Show("选择的参数不正确，请重新选择");
+			}
+		}
+
+		private void btnPhi_Click(object sender, RoutedEventArgs e)
+		{
+			if (keyValue == 4)
+			{
+				txtTemp.Text = test.flux;
+				txtTempY.Text = null;
+				txtTempZ.Text = null;
+				password = 4;
+			}
+			else
+			{
+				MessageBox.Show("选择的参数不正确，请重新选择");
+			}
 		}
 	}
 }

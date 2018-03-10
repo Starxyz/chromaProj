@@ -31,8 +31,5 @@ namespace chromaProcess
 			var te = new Plot(list);
 			this.DataContext = te;
 		}
-
-		
-		
 	}
 }

@@ -37,17 +37,23 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="124*" />
+                <ColumnDefinition Width="73*"/>
+                <ColumnDefinition Width="198*"/>
+                <ColumnDefinition Width="197*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="45"/>
                 <RowDefinition/>
                 <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
+            <Grid Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" Margin="10,0,0,0">
+                <Label Content="请在列表右侧选择参数填入公式的（*）缺省处!"
+                       Name="hints" Visibility="Hidden"
+                       HorizontalAlignment="Left" Margin="129,10,0,0" VerticalAlignment="Top"/>
 
-            <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,15,15">
+            </Grid>
+            <Grid Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,15,15">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
@@ -63,13 +69,13 @@
                                      Formula="{Binding Text,ElementName=txtTempZ}" >
                 </Controls:FormulaControl>
             </Grid>
-            <TextBox Name="txtTemp" Width="20" Height="15" Visibility="Hidden">
+            <TextBox Name="txtTemp" Width="20" Height="15" Visibility="Hidden" Margin="88,15,16,15">
             </TextBox>
-            <TextBox Name="txtTempY" Width="20" Height="15" Visibility="Hidden">
+            <TextBox Name="txtTempY" Width="20" Height="15" Visibility="Hidden" Margin="88,15,16,15">
             </TextBox>
-            <TextBox Name="txtTempZ" Width="20" Height="15" Visibility="Hidden">
+            <TextBox Name="txtTempZ" Width="20" Height="15" Visibility="Hidden" Margin="88,15,16,15">
             </TextBox>
-            <Grid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -94,17 +100,46 @@
                 <Button Name="btnLm" Margin="5,0,5,5" Grid.Column="1" Grid.Row="1" Content="光通量" Click="btnLm_Click" Height="27" VerticalAlignment="Bottom"/>
             </Grid>
             <TextBox Name="dispLabel" Grid.Column="0" Grid.Row="2" IsReadOnly="True" HorizontalContentAlignment="Center"
-                     VerticalContentAlignment="Center">
+                     VerticalContentAlignment="Center" Grid.ColumnSpan="2">
             </TextBox>
             <ListView x:Name="spectrumList" HorizontalAlignment="Left" MinWidth="120" Grid.Column="0" Grid.Row="0"
-                      Grid.RowSpan="2" Margin="0,20,0,10" MinHeight="330" VerticalAlignment="Top">
+                      Grid.RowSpan="2" Margin="0,20,0,0" MinHeight="330" VerticalAlignment="Top">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="波长/nm"  DisplayMemberBinding="{Binding Wave}"/>
-                        <GridViewColumn Header="强度" DisplayMemberBinding="{Binding Intensity}"/>
+                        <GridViewColumn Header="  强度  " DisplayMemberBinding="{Binding Intensity}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Name="btnS_lambda" Margin="15,5,15,5" Grid.Row="0" Grid.Column="0"  Content="S(λ)"
+                        Click="btnS_lambda_Click"></Button>
+                <Button Name="btnIn_X" Margin="15,5,15,5" Grid.Row="1" Grid.Column="0" Content="X"
+                        Click="btnIn_X_Click"></Button>
+                <Button Name="btnIn_Y" Margin="15,5,15,5" Grid.Row="2" Grid.Column="0" Content="Y"
+                        Click="btnIn_Y_Click"></Button>
+                <Button Name="btnIn_Z" Margin="15,5,15,5" Grid.Row="3" Grid.Column="0" Content="Z"
+                        Click="btnIn_Z_Click"></Button>
+                <Button Name="btnIn_x" Margin="15,5,15,5" Grid.Row="4" Grid.Column="0" Content="x"
+                        Click="btnIn_x_Click"></Button>
+                <Button Name="btnIn_y" Margin="15,5,15,5" Grid.Row="5" Grid.Column="0" Content="y"
+                        Click="btnIn_y_Click"></Button>
+
+                <Button Name="btnPhi" Margin="15,5,15,5" Grid.Row="6" Grid.Column="0" Content="Φ"
+                        Click="btnPhi_Click"></Button>
+                
+            </Grid>
         </Grid>
 
     </Grid>

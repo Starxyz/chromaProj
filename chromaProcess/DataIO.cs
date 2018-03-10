@@ -352,5 +352,21 @@ namespace chromaProcess
 		public string flux = @"\Phi_v=Km\cdot\int_0^{\infty} \Phi_{e\cdot\lambda}\cdot V(\lambda) d\lambda";
 		public string colorT = @"T=-437n^3+3601n^2-6861n+5514.31";
 		public string colorN = @"n=\frac{x-0.3320}{y-0.1858}";
+
+		public string _coordx_ = @"x=\frac{X}{X+(*)+(*)}";
+		public string _coordy_ = @"y=\frac{X}{X+Y+(*)}";
+		public string _coordz_ = @"z=\frac{X}{(X+Y+Z}";
+
+		// "_" profix means default value
+		public string _adjCoef = @"K=\frac{100}{\sum_{380}^{780} (*) \bar{y}(\lambda)\Delta\lambda }";
+		public string _trisMulusX = @"X=k\sum \psi(\lambda)\bar{x}(\lambda)\Delta\lambda ";
+		public string _trisMulusY = @"Y=k\sum \psi(\lambda)\bar{y}(\lambda)\Delta\lambda ";
+		public string _trisMulusZ = @"Z=k\sum \psi(\lambda)\bar{z}(\lambda)\Delta\lambda ";
+		public string _coordx = @"x=\frac{X}{(*)+(*)+(*)}";
+		public string _coordy = @"y=\frac{Y}{(*)+(*)+(*)}";
+		public string _coordz = @"z=\frac{Z}{(*)+(*)+(*)}";
+		public string _flux = @"\Phi_v=Km\cdot\int_0^{\infty} (*) V(\lambda) d\lambda";
+		public string _colorT = @"T=-437n^3+3601n^2-6861n+5514.31";
+		public string _colorN = @"n=\frac{(*)-0.3320}{(*)-0.1858}";
 	}
 }
