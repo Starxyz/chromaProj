@@ -106,8 +106,8 @@
                       Grid.RowSpan="2" Margin="0,20,0,0" MinHeight="330" VerticalAlignment="Top">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="波长/nm"  DisplayMemberBinding="{Binding Wave}"/>
-                        <GridViewColumn Header="  强度  " DisplayMemberBinding="{Binding Intensity}"/>
+                        <GridViewColumn x:Name="gcv1" Header="波长"  DisplayMemberBinding="{Binding Wave}"/>
+                        <GridViewColumn x:Name="gcv2" Header="  强度  " DisplayMemberBinding="{Binding Intensity}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

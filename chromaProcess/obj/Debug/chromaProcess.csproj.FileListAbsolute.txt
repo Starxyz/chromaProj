@@ -44,3 +44,4 @@ G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\chromaProcess.cspro
 G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\chromaProcess.exe
 G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\chromaProcess.pdb
 G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\chromaProcess.csprojResolveAssemblyReference.cache
+G:\star\chromaProj\1st\chromaProcess\chromaProcess\obj\Debug\chromaProcess.csproj.CopyComplete

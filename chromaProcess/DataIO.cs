@@ -33,6 +33,8 @@ namespace chromaProcess
 		public BindingList<SampleList> sample_1nm = new BindingList<SampleList>();
 		public BindingList<SampleList5> sample_5nm = new BindingList<SampleList5>();
 		public double[] dispNum = new double[9];
+		private double Lm = 0;
+		private string brightness = null;
 		public bool ChooseInputDir()
 		{
 			OpenFileDialog fileDialog = new OpenFileDialog();
@@ -84,16 +86,21 @@ namespace chromaProcess
 			if (result == true)
 			{
 				string localFilePath = sfd.FileName.ToString();
-				string header = "波长\t强度\tx\ty\tz";
+				//string header = "波长\t强度\tx\ty\tz";
 				StreamWriter file = new StreamWriter(localFilePath);
-				file.WriteLine(header);
-				MessageBox.Show(data.sample_5nm.Count.ToString());
-				foreach (var item in data.sample_5nm)
-				{
-					string line = item.Wave.ToString() + '\t' + item.Intensity.ToString() + '\t'
-									+ item.x1.ToString() + '\t' + item.y1.ToString() + '\t' + item.z1.ToString();
-					file.WriteLine(line);
-				}
+				//file.WriteLine(header);
+				//MessageBox.Show(data.sample_5nm.Count.ToString());
+				//foreach (var item in data.sample_5nm)
+				//{
+				//	string line = item.Wave.ToString() + '\t' + item.Intensity.ToString() + '\t'
+				//					+ item.x1.ToString() + '\t' + item.y1.ToString() + '\t' + item.z1.ToString();
+				//	file.WriteLine(line);
+				//}
+				file.WriteLine("色品坐标：" + data.dispNum[4].ToString("F6") + "\t"+ data.dispNum[5].ToString("F6") + "\t" + data.dispNum[6].ToString("F6"));
+				file.WriteLine("色温：" + data.dispNum[7].ToString("F6") + "\t" + data.dispNum[8].ToString("F6"));
+				file.WriteLine("光通量：" + Lm.ToString("F6") );
+				file.WriteLine("亮度：" + "\n" + brightness);
+				
 				file.Close();
 			}
 		}
@@ -281,6 +288,7 @@ namespace chromaProcess
 				i++;
 			}
 			var res = sum * 683;
+			Lm = res;
 			//MessageBox.Show("光通量是:" + res);
 			return res.ToString();
 		}
@@ -298,6 +306,7 @@ namespace chromaProcess
 			var cMatrix = M.DenseOfRowArrays(data.TargetMatrix);
 			var res = cMatrix * trisValueMatrix.Inverse() * bMatrix * 1000000;
 			var res1 = res * bMatrix;
+			brightness = res.ToString();
 			//var cMatrix = M.DenseOfRowArrays(data.BasicC);
 			//MessageBox.Show(res.ToString());
 			return res.ToString();
@@ -354,8 +363,16 @@ namespace chromaProcess
 		public string colorN = @"n=\frac{x-0.3320}{y-0.1858}";
 
 		public string _coordx_ = @"x=\frac{X}{X+(*)+(*)}";
-		public string _coordy_ = @"y=\frac{X}{X+Y+(*)}";
-		public string _coordz_ = @"z=\frac{X}{(X+Y+Z}";
+		public string _coordxy = @"y=\frac{Y}{X+(*)+(*)}";
+		public string _coordxyz = @"z=\frac{Z}{X+(*)+(*)}";
+
+		public string _coordy_ = @"y=\frac{Y}{X+Y+(*)}";
+		public string _coordyx = @"x=\frac{X}{X+Y+(*)}";
+		public string _coordyxz = @"z=\frac{Z}{X+Y+(*)}";
+
+		public string _coordz_ = @"z=\frac{X}{X+Y+Z}";
+		public string _coordzx = @"x=\frac{X}{X+Y+Z}";
+		public string _coordzxy = @"y=\frac{Y}{X+Y+Z}";
 
 		// "_" profix means default value
 		public string _adjCoef = @"K=\frac{100}{\sum_{380}^{780} (*) \bar{y}(\lambda)\Delta\lambda }";
@@ -368,5 +385,7 @@ namespace chromaProcess
 		public string _flux = @"\Phi_v=Km\cdot\int_0^{\infty} (*) V(\lambda) d\lambda";
 		public string _colorT = @"T=-437n^3+3601n^2-6861n+5514.31";
 		public string _colorN = @"n=\frac{(*)-0.3320}{(*)-0.1858}";
+		public string _colorN1 = @"n=\frac{x-0.3320}{(*)-0.1858}";
+		public string _colorN2 = @"n=\frac{(*)-0.3320}{(*)-0.1858}";
 	}
 }

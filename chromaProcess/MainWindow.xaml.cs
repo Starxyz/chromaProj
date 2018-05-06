@@ -29,6 +29,9 @@ namespace chromaProcess
 		private int keyValue = 0;
 		bool isOpen = false;
 		bool isSample = false;
+		public static string title1 = "波长/nm";
+		
+
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -52,6 +55,16 @@ namespace chromaProcess
 
 				inputData.AddData();
 				spectrumList.ItemsSource = inputData.wave_intensity;//显示导入的数据
+				if (inputData.wave_intensity.Count < 20)
+				{
+					gcv1.Header = "电流";
+					gcv2.Header = "光通量";
+				}
+				else
+				{
+					gcv1.Header = "波长";
+					gcv2.Header = "强度";
+				}
 			}
 			
 		}
@@ -316,9 +329,9 @@ namespace chromaProcess
 		{
 			if (keyValue == 2)
 			{
-				txtTemp.Text = test.coordx;
-				txtTempY.Text = test.coordy;
-				txtTempZ.Text = test.coordz;
+				txtTemp.Text = test._coordx_;
+				txtTempY.Text = test._coordxy;
+				txtTempZ.Text = test._coordxyz;
 				password = 2;
 			}
 			else
@@ -331,9 +344,9 @@ namespace chromaProcess
 		{
 			if (keyValue == 2)
 			{
-				txtTemp.Text = test.coordx;
-				txtTempY.Text = test.coordy;
-				txtTempZ.Text = test.coordz;
+				txtTemp.Text = test._coordyx;
+				txtTempY.Text = test._coordy_;
+				txtTempZ.Text = test._coordyxz;
 				password = 2;
 			}
 			else
@@ -346,9 +359,9 @@ namespace chromaProcess
 		{
 			if (keyValue == 2)
 			{
-				txtTemp.Text = test.coordx;
-				txtTempY.Text = test.coordy;
-				txtTempZ.Text = test.coordz;
+				txtTemp.Text = test._coordzx;
+				txtTempY.Text = test._coordzxy;
+				txtTempZ.Text = test._coordz_;
 				password = 2;
 			}
 			else
@@ -362,7 +375,7 @@ namespace chromaProcess
 			if (keyValue == 3)
 			{
 				txtTemp.Text = test.colorT;
-				txtTempY.Text = test.colorN;
+				txtTempY.Text = test._colorN1;
 				txtTempZ.Text = null;
 				password = 3;
 			}
