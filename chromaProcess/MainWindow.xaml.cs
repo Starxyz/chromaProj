@@ -220,23 +220,9 @@ namespace chromaProcess
 		private void btn_xyz_Click(object sender, RoutedEventArgs e)
 		{
 			keyValue = 2;
-			//if (password == 2 )
-			//{
-			//	txtTemp.Text = test.coordx;
-			//	txtTempY.Text = test.coordy;
-			//	txtTempZ.Text = test.coordz;
-			//}
-			//else
-			//{
-			//	txtTemp.Text = test._coordx;
-			//	txtTempY.Text = test._coordy;
-			//	txtTempZ.Text = test._coordz;
-			//}
-			//if (txtTemp.Text.Equals(test.coordx)  && txtTempY.Text.Equals(test.coordy) && txtTempZ.Text.Equals(test.coordz))
-			//{
 			if (isOpen && isSample)
 			{
-					if (password == 2 && txtTemp.Text.Equals(test.coordx))
+					if (password == 2 && txtTemp.Text.Equals(test.coordx) && txtTempY.Text.Equals(test.coordy) && txtTempZ.Text.Equals(test.coordz))
 					{
 						dispLabel.Text = "(" + inputData.dispNum[4].ToString("F6") + ", " + inputData.dispNum[5].ToString("F6")
 										+ ", " + inputData.dispNum[6].ToString("F6") + ')';
@@ -253,22 +239,12 @@ namespace chromaProcess
 			{
 				System.Windows.Forms.MessageBox.Show("请先采样");
 			}
-		//else
-		//	MessageBox.Show("请导入数据并进行抽样！");
-		//}
-		//else
-		//{
-		//	txtTemp.Text = test._coordx;
-		//	txtTempY.Text = test._coordy;
-		//	txtTempZ.Text = test._coordz;
-		//	MessageBox.Show("公式不完整或数据未处理");
-		//}
 	}
 
 		private void btnNT_Click(object sender, RoutedEventArgs e)
 		{
 			keyValue = 3;
-			if (password == 3)
+			if (password == 3 && txtTemp.Text.Equals(test.colorT) && txtTempY.Text.Equals(test.colorN))
 			{
 				txtTemp.Text = test.colorT;
 				txtTempY.Text = test.colorN;
@@ -282,11 +258,15 @@ namespace chromaProcess
 			}
 			if (isOpen && isSample)
 			{
-				if (password == 3)
+				if (password == 3 && txtTemp.Text.Equals(test.colorT) && txtTempY.Text.Equals(test.colorN))
 				{
 					dispLabel.Text = "n = " + inputData.dispNum[7].ToString() + '\n'
 									+ "T = " + inputData.dispNum[8].ToString();
-				}	
+				}
+				else
+				{
+					MessageBox.Show("公式不完整");
+				}
 			}
 			else
 				MessageBox.Show("请导入数据并进行抽样！");

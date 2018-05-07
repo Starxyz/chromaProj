@@ -370,7 +370,7 @@ namespace chromaProcess
 		public string _coordyx = @"x=\frac{X}{X+Y+(*)}";
 		public string _coordyxz = @"z=\frac{Z}{X+Y+(*)}";
 
-		public string _coordz_ = @"z=\frac{X}{X+Y+Z}";
+		public string _coordz_ = @"z=\frac{Z}{X+Y+Z}";
 		public string _coordzx = @"x=\frac{X}{X+Y+Z}";
 		public string _coordzxy = @"y=\frac{Y}{X+Y+Z}";
 
