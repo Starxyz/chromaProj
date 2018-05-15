@@ -203,15 +203,20 @@ namespace chromaProcess
 
 		private void btnXYZ_Click(object sender, RoutedEventArgs e)
 		{
-			txtTemp.Text = test.trisMulusX;
-			txtTempY.Text = test.trisMulusY;
-			txtTempZ.Text = test.trisMulusZ;
+			keyValue = 5;
+			txtTemp.Text = test.default_trisMulusX;
+			txtTempY.Text = test.default_trisMulusY;
+			txtTempZ.Text = test.default_trisMulusZ;
 			if (isOpen && isSample)
 			{
 				//inputData.CalXYZ(inputData);
-				string s = "X = " + inputData.dispNum[1].ToString("F6") + '\n' + "Y = " + 
+				if (password==5)
+				{
+					string s = "X = " + inputData.dispNum[1].ToString("F6") + '\n' + "Y = " +
 								inputData.dispNum[2].ToString("F6") + '\n' + "Z = " + inputData.dispNum[3].ToString("F6");
-				dispLabel.Text = s;
+					dispLabel.Text = s;
+				}
+				
 			}
 			else
 				MessageBox.Show("请导入数据并进行抽样！");
@@ -409,6 +414,21 @@ namespace chromaProcess
 				txtTempY.Text = null;
 				txtTempZ.Text = null;
 				password = 4;
+			}
+			else
+			{
+				MessageBox.Show("选择的参数不正确，请重新选择");
+			}
+		}
+
+		private void btnDeltaLambda_Click(object sender, RoutedEventArgs e)
+		{
+			if (keyValue == 5)
+			{
+				txtTemp.Text = test.trisMulusX;
+				txtTempY.Text = test.trisMulusY;
+				txtTempZ.Text = test.trisMulusZ; ;
+				password = 5;
 			}
 			else
 			{

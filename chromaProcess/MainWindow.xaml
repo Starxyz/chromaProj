@@ -138,7 +138,9 @@
 
                 <Button Name="btnPhi" Margin="15,5,15,5" Grid.Row="6" Grid.Column="0" Content="Φ"
                         Click="btnPhi_Click"></Button>
-                
+
+                <Button Name="btnDeltaLambda" Margin="15,5,15,5" Grid.Row="7" Grid.Column="0" Content="△λ"
+                        Click="btnDeltaLambda_Click"></Button>
             </Grid>
         </Grid>
 

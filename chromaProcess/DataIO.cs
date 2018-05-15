@@ -387,5 +387,9 @@ namespace chromaProcess
 		public string _colorN = @"n=\frac{(*)-0.3320}{(*)-0.1858}";
 		public string _colorN1 = @"n=\frac{x-0.3320}{(*)-0.1858}";
 		public string _colorN2 = @"n=\frac{(*)-0.3320}{(*)-0.1858}";
+
+		public string default_trisMulusX = @"X=k\sum \psi(\lambda)\bar{x}(\lambda)(*) ";
+		public string default_trisMulusY = @"Y=k\sum \psi(\lambda)\bar{y}(\lambda)(*) ";
+		public string default_trisMulusZ = @"Z=k\sum \psi(\lambda)\bar{z}(\lambda)(*) ";
 	}
 }
