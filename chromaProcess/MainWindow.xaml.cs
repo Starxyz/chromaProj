@@ -285,11 +285,15 @@ namespace chromaProcess
 
 		private void btnBrightness_Click(object sender, RoutedEventArgs e)
 		{
-			//MessageBox.Show(inputData.BasicB[0].ToString());
-			//double L = inputData.Lr + inputData.Lg + inputData.Lb;
-			//MessageBox.Show("亮度是： " + L.ToString() + '\n' + "Lr = " + inputData.Lr.ToString()
-			//				+ '\n' + "Lg = " + inputData.Lg.ToString() + '\n' + "Lb = " + inputData.Lb.ToString());
-			var test = inputData.CalBrightness(inputData);
+            //MessageBox.Show(inputData.BasicB[0].ToString());
+            //double L = inputData.Lr + inputData.Lg + inputData.Lb;
+            //MessageBox.Show("亮度是： " + L.ToString() + '\n' + "Lr = " + inputData.Lr.ToString()
+            //				+ '\n' + "Lg = " + inputData.Lg.ToString() + '\n' + "Lb = " + inputData.Lb.ToString());
+            //设置三基色坐标
+            TrisBasic trisBasic = new TrisBasic(inputData);
+            trisBasic.Show();
+
+            var test = inputData.CalBrightness(inputData);
 			dispLabel.Text = test;
 		}
 
@@ -435,5 +439,11 @@ namespace chromaProcess
 				MessageBox.Show("选择的参数不正确，请重新选择");
 			}
 		}
-	}
+
+        private void btnSetTriValues_Click(object sender, RoutedEventArgs e)
+        {
+            TrisBasic trisBasic = new TrisBasic(inputData);
+            trisBasic.Show();
+        }
+    }
 }

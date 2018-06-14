@@ -32,6 +32,7 @@ namespace chromaProcess
 		public List<Tristimulus> tri_values = new List<Tristimulus>();
 		public BindingList<SampleList> sample_1nm = new BindingList<SampleList>();
 		public BindingList<SampleList5> sample_5nm = new BindingList<SampleList5>();
+        //0:调整系数k；1~3：三刺激值XYZ；4~6：色品坐标；7~8：色温n、k；9：亮度
 		public double[] dispNum = new double[9];
 		private double Lm = 0;
 		private string brightness = null;
@@ -88,20 +89,22 @@ namespace chromaProcess
 				string localFilePath = sfd.FileName.ToString();
 				//string header = "波长\t强度\tx\ty\tz";
 				StreamWriter file = new StreamWriter(localFilePath);
-				//file.WriteLine(header);
-				//MessageBox.Show(data.sample_5nm.Count.ToString());
-				//foreach (var item in data.sample_5nm)
-				//{
-				//	string line = item.Wave.ToString() + '\t' + item.Intensity.ToString() + '\t'
-				//					+ item.x1.ToString() + '\t' + item.y1.ToString() + '\t' + item.z1.ToString();
-				//	file.WriteLine(line);
-				//}
-				file.WriteLine("色品坐标：" + data.dispNum[4].ToString("F6") + "\t"+ data.dispNum[5].ToString("F6") + "\t" + data.dispNum[6].ToString("F6"));
-				file.WriteLine("色温：" + data.dispNum[7].ToString("F6") + "\t" + data.dispNum[8].ToString("F6"));
-				file.WriteLine("光通量：" + Lm.ToString("F6") );
-				file.WriteLine("亮度：" + "\n" + brightness);
-				
-				file.Close();
+                //file.WriteLine(header);
+                //MessageBox.Show(data.sample_5nm.Count.ToString());
+                //foreach (var item in data.sample_5nm)
+                //{
+                //	string line = item.Wave.ToString() + '\t' + item.Intensity.ToString() + '\t'
+                //					+ item.x1.ToString() + '\t' + item.y1.ToString() + '\t' + item.z1.ToString();
+                //	file.WriteLine(line);
+                //}
+                file.WriteLine("调整系数K：" + data.dispNum[0]);
+                file.WriteLine("三刺激值：" + data.dispNum[1] + "\t" + data.dispNum[2] + "\t" + data.dispNum[3]);
+                file.WriteLine("色品坐标：" + data.dispNum[4].ToString("F6") + "\t" + data.dispNum[5].ToString("F6") + "\t" + data.dispNum[6].ToString("F6"));
+                file.WriteLine("色温：n=" + data.dispNum[7].ToString("F6") + "\tT=" + data.dispNum[8].ToString("F6"));
+                file.WriteLine("光通量：" + Lm.ToString("F6"));
+                file.WriteLine("亮度：" + "\n" + brightness);
+
+                file.Close();
 			}
 		}
 
@@ -388,8 +391,8 @@ namespace chromaProcess
 		public string _colorN1 = @"n=\frac{x-0.3320}{(*)-0.1858}";
 		public string _colorN2 = @"n=\frac{(*)-0.3320}{(*)-0.1858}";
 
-		public string default_trisMulusX = @"X=k\sum \psi(\lambda)\bar{x}(\lambda)(*) ";
-		public string default_trisMulusY = @"Y=k\sum \psi(\lambda)\bar{y}(\lambda)(*) ";
-		public string default_trisMulusZ = @"Z=k\sum \psi(\lambda)\bar{z}(\lambda)(*) ";
+		public string default_trisMulusX = @"X=k\sum (*)\bar{x}(\lambda)\Delta\lambda";
+		public string default_trisMulusY = @"Y=k\sum (*)\bar{y}(\lambda)\Delta\lambda";
+		public string default_trisMulusZ = @"Z=k\sum (*)\bar{z}(\lambda)\Delta\lambda";
 	}
 }

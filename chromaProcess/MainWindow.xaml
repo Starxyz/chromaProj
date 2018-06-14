@@ -21,9 +21,9 @@
                     <MenuItem x:Name="menuSample5" Header="5nm采样" Click="menuSample5_Click" />
                     <MenuItem x:Name="menuMetadata" Header="原始数据" Click="menuMetadata_Click" />
                 </MenuItem>
-                <MenuItem Header="公式">
+                <MenuItem Header="公式查询">
                     <MenuItem x:Name="menuTristimulus" Header="显示CIE标准光谱三刺激值" Click="MenuTristimulus_Click" />
-                    <MenuItem x:Name="menuTrisBasic" Header="设置三基色坐标" Click="menuTrisBasic_Click" />
+                    <!--<MenuItem x:Name="menuTrisBasic" Header="设置三基色坐标" Click="menuTrisBasic_Click" />-->
                     <MenuItem x:Name="menuAdjCoef" Header="调整系数K" Click="menuAdjCoef_Click"/>
                     <MenuItem x:Name="menuPropCoef" Header="三刺激值X Y Z" Click="menuPropCoef_Click"/>
                     <MenuItem x:Name="menuChroma" Header="色品坐标x y z" Click="menuChroma_Click"/>
@@ -96,7 +96,8 @@
                 </Button>
                 <Button Name="btnNT" Margin="5" Click="btnNT_Click" Grid.Column="3" Grid.Row="0" Content="色温" >
                 </Button>
-                <Button Name="btnBrightness" Margin="5,0,5,5" Grid.Column="0" Grid.Row="1" Content="计算亮度" Click="btnBrightness_Click" Height="27" VerticalAlignment="Bottom"/>
+                <Button Name="btnBrightness" Margin="5,0,5,5" Grid.Column="0" Grid.Row="1" Content="混色计算" Click="btnBrightness_Click" Height="27" VerticalAlignment="Bottom"/>
+                <Button Name="btnSetTriValues" Margin="5,0,5,5" Grid.Column="0" Grid.Row="2" Content="设置三基色坐标" Click="btnSetTriValues_Click" Height="27" VerticalAlignment="Bottom"/>
                 <Button Name="btnLm" Margin="5,0,5,5" Grid.Column="1" Grid.Row="1" Content="光通量" Click="btnLm_Click" Height="27" VerticalAlignment="Bottom"/>
             </Grid>
             <TextBox Name="dispLabel" Grid.Column="0" Grid.Row="2" IsReadOnly="True" HorizontalContentAlignment="Center"
@@ -139,7 +140,7 @@
                 <Button Name="btnPhi" Margin="15,5,15,5" Grid.Row="6" Grid.Column="0" Content="Φ"
                         Click="btnPhi_Click"></Button>
 
-                <Button Name="btnDeltaLambda" Margin="15,5,15,5" Grid.Row="7" Grid.Column="0" Content="△λ"
+                <Button Name="btnDeltaLambda" Margin="15,5,15,5" Grid.Row="7" Grid.Column="0" Content="ψ(λ)"
                         Click="btnDeltaLambda_Click"></Button>
             </Grid>
         </Grid>
